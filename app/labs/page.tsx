@@ -4,7 +4,7 @@ export default function Labs() {
   return (
     <div id="wd-labs">
       <h1>Labs</h1>
-      <h2>Linhao Jin</h2>
+      <h2>Linhao Jin — Section CS4550 01</h2>
       <a
         id="wd-github"
         href="https://github.com/Megurni/webdev-client"
