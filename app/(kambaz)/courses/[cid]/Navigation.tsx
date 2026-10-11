@@ -1,16 +1,28 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import "../../kambaz.css";
 
 export default function CourseNavigation({ cid }: { cid: string }) {
+  const pathname = usePathname() ?? "";
+  const items = [
+    ["Home", "home", "wd-course-home-link"],
+    ["Modules", "modules", "wd-course-modules-link"],
+    ["Piazza", "piazza", "wd-course-piazza-link"],
+    ["Zoom", "zoom", "wd-course-zoom-link"],
+    ["Assignments", "assignments", "wd-course-assignments-link"],
+    ["Quizzes", "quizzes", "wd-course-quizzes-link"],
+    ["Grades", "grades", "wd-course-grades-link"],
+    ["People", "people/table", "wd-course-people-link"],
+  ];
   return (
-    <div id="wd-courses-navigation">
-      <Link href={`/courses/${cid}/home`} id="wd-course-home-link">Home</Link>{" "}<br />
-      <Link href={`/courses/${cid}/modules`} id="wd-course-modules-link">Modules</Link>{" "}<br />
-      <Link href={`/courses/${cid}/piazza`} id="wd-course-piazza-link">Piazza</Link>{" "}<br />
-      <Link href={`/courses/${cid}/zoom`} id="wd-course-zoom-link">Zoom</Link>{" "}<br />
-      <Link href={`/courses/${cid}/assignments`} id="wd-course-assignments-link">Assignments</Link>{" "}<br />
-      <Link href={`/courses/${cid}/quizzes`} id="wd-course-quizzes-link">Quizzes</Link>{" "}<br />
-      <Link href={`/courses/${cid}/grades`} id="wd-course-grades-link">Grades</Link>{" "}<br />
-      <Link href={`/courses/${cid}/people/table`} id="wd-course-people-link">People</Link>{" "}<br />
+    <div id="wd-courses-navigation" className="wd list-group rounded-none text-lg">
+      {items.map(([label, route, id]) => {
+        const href = `/courses/${cid}/${route}`;
+        const active = pathname === href || pathname.startsWith(href + "/");
+        return <Link key={id} href={href} id={id} className={active ? "list-group-item active border-0" : "list-group-item border-0 text-red-600"}>{label}</Link>;
+      })}
+      <Link href={`/courses/${cid}/home`} id="wd-course-ai-link" className="list-group-item border-0 text-red-600">Sample</Link>
     </div>
   );
 }

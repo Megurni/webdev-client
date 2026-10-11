@@ -1,34 +1,28 @@
 import Link from "next/link";
 
+const fieldClass = "w-full rounded border border-neutral-300 px-3 py-2";
+const labelClass = "mb-1 block font-medium";
+
 export default async function AssignmentEditor({ params }: { params: Promise<{ cid: string; aid: string }> }) {
   const { cid } = await params;
   const assignmentsPath = `/courses/${cid}/assignments`;
   return (
-    <div id="wd-assignments-editor">
-      <label htmlFor="wd-name">Assignment Name</label>
-      <input id="wd-name" defaultValue="A1 - ENV + HTML" /><br /><br />
-      <label htmlFor="wd-description">Description</label><br />
-      <textarea id="wd-description" defaultValue="The assignment is available online. Submit a link to the landing page of your Web application running on Vercel." />
-      <br />
-      <table><tbody>
-        <tr><td align="right" valign="top"><label htmlFor="wd-points">Points</label></td><td><input id="wd-points" defaultValue={100} /></td></tr>
-        <tr><td align="right"><label htmlFor="wd-group">Assignment Group</label></td><td><select id="wd-group" defaultValue="ASSIGNMENTS"><option>ASSIGNMENTS</option><option>QUIZZES</option><option>EXAMS</option><option>PROJECT</option></select></td></tr>
-        <tr><td align="right"><label htmlFor="wd-display-grade-as">Display Grade as</label></td><td><select id="wd-display-grade-as" defaultValue="Points"><option>Points</option><option>Percentage</option><option>Complete/Incomplete</option></select></td></tr>
-        <tr><td align="right"><label htmlFor="wd-submission-type">Submission Type</label></td><td><select id="wd-submission-type" defaultValue="Online"><option>Online</option><option>On Paper</option><option>No Submission</option></select></td></tr>
-        <tr><td align="right" valign="top">Online Entry Options</td><td>
-          <input id="wd-text-entry" type="checkbox" /><label htmlFor="wd-text-entry">Text Entry</label><br />
-          <input id="wd-website-url" type="checkbox" /><label htmlFor="wd-website-url">Website URL</label><br />
-          <input id="wd-media-recordings" type="checkbox" /><label htmlFor="wd-media-recordings">Media Recordings</label><br />
-          <input id="wd-student-annotation" type="checkbox" /><label htmlFor="wd-student-annotation">Student Annotation</label><br />
-          <input id="wd-file-upload" type="checkbox" /><label htmlFor="wd-file-upload">File Uploads</label>
-        </td></tr>
-        <tr><td align="right"><label htmlFor="wd-assign-to">Assign to</label></td><td><input id="wd-assign-to" defaultValue="Everyone" /></td></tr>
-        <tr><td align="right"><label htmlFor="wd-due-date">Due</label></td><td><input id="wd-due-date" type="date" defaultValue="2026-10-13" /></td></tr>
-        <tr><td align="right"><label htmlFor="wd-available-from">Available from</label></td><td><input id="wd-available-from" type="date" defaultValue="2026-10-06" /></td></tr>
-        <tr><td align="right"><label htmlFor="wd-available-until">Until</label></td><td><input id="wd-available-until" type="date" defaultValue="2026-10-20" /></td></tr>
-      </tbody></table>
-      <Link href={assignmentsPath} id="wd-cancel">Cancel</Link>{" "}
-      <Link href={assignmentsPath} id="wd-save">Save</Link>
+    <div id="wd-assignments-editor" className="max-w-3xl">
+      <div className="mb-4"><label htmlFor="wd-name" className={labelClass}>Assignment Name</label><input id="wd-name" defaultValue="A1 - ENV + HTML" className={fieldClass} /></div>
+      <div className="mb-4"><label htmlFor="wd-description" className={labelClass}>Description</label><textarea id="wd-description" defaultValue="The assignment is available online. Submit a link to the landing page of your Web application running on Vercel." className={`${fieldClass} min-h-32`} /></div>
+      <div className="mb-4"><label htmlFor="wd-points" className={labelClass}>Points</label><input id="wd-points" defaultValue={100} className={fieldClass} /></div>
+      <div className="mb-4"><label htmlFor="wd-group" className={labelClass}>Assignment Group</label><select id="wd-group" defaultValue="ASSIGNMENTS" className={fieldClass}><option>ASSIGNMENTS</option><option>QUIZZES</option><option>EXAMS</option><option>PROJECT</option></select></div>
+      <div className="mb-4"><label htmlFor="wd-display-grade-as" className={labelClass}>Display Grade as</label><select id="wd-display-grade-as" defaultValue="Points" className={fieldClass}><option>Points</option><option>Percentage</option><option>Complete/Incomplete</option></select></div>
+      <div className="mb-4"><label htmlFor="wd-submission-type" className={labelClass}>Submission Type</label><select id="wd-submission-type" defaultValue="Online" className={fieldClass}><option>Online</option><option>On Paper</option><option>No Submission</option></select></div>
+      <fieldset className="mb-4"><legend className={labelClass}>Online Entry Options</legend>
+        {[["wd-text-entry", "Text Entry"], ["wd-website-url", "Website URL"], ["wd-media-recordings", "Media Recordings"], ["wd-student-annotation", "Student Annotation"], ["wd-file-upload", "File Uploads"]].map(([id, label]) => <label key={id} className="mb-1 block"><input id={id} type="checkbox" className="mr-2" />{label}</label>)}
+      </fieldset>
+      <div className="mb-4"><label htmlFor="wd-assign-to" className={labelClass}>Assign to</label><input id="wd-assign-to" defaultValue="Everyone" className={fieldClass} /></div>
+      <div className="mb-4"><label htmlFor="wd-due-date" className={labelClass}>Due</label><input id="wd-due-date" type="date" defaultValue="2026-10-13" className={fieldClass} /></div>
+      <div className="mb-4"><label htmlFor="wd-available-from" className={labelClass}>Available from</label><input id="wd-available-from" type="date" defaultValue="2026-10-06" className={fieldClass} /></div>
+      <div className="mb-4"><label htmlFor="wd-available-until" className={labelClass}>Until</label><input id="wd-available-until" type="date" defaultValue="2026-10-20" className={fieldClass} /></div>
+      <div className="mb-4"><label htmlFor="wd-ai-editor-notes" className={labelClass}>Sample notes</label><textarea id="wd-ai-editor-notes" className={fieldClass} /></div>
+      <div className="flex justify-end gap-2"><Link href={assignmentsPath} id="wd-cancel" className="rounded border border-neutral-300 px-4 py-2 no-underline">Cancel</Link><Link href={assignmentsPath} id="wd-save" className="rounded bg-red-600 px-4 py-2 text-white no-underline">Save</Link></div>
     </div>
   );
 }
