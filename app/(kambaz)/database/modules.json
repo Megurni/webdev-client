@@ -1,0 +1,93 @@
+[
+  {
+    "_id": "M101",
+    "course": "RS101",
+    "name": "Introduction to Rocket Propulsion",
+    "lessons": [
+      {
+        "name": "Learning objectives",
+        "items": [
+          "History of rocketry",
+          "Rocket equation"
+        ]
+      },
+      {
+        "name": "Reading",
+        "items": [
+          "What makes a rocket fly"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "M102",
+    "course": "RS101",
+    "name": "Fuel and Combustion",
+    "lessons": [
+      {
+        "name": "Learning objectives",
+        "items": [
+          "Fuel types",
+          "Combustion chambers",
+          "Nozzle Design"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "M201",
+    "course": "RS102",
+    "name": "Air Flow Fundamentals",
+    "lessons": [
+      {
+        "name": "Learning objectives",
+        "items": [
+          "Lift and drag",
+          "Bernoulli principle"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "M202",
+    "course": "RS102",
+    "name": "Wing Design",
+    "lessons": [
+      {
+        "name": "Practice",
+        "items": [
+          "Airfoil profiles",
+          "Wind tunnel testing"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "M301",
+    "course": "RS103",
+    "name": "Spacecraft Systems",
+    "lessons": [
+      {
+        "name": "Learning objectives",
+        "items": [
+          "Power systems",
+          "Orbital mechanics"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "M401",
+    "course": "RS104",
+    "name": "Organic Molecules",
+    "lessons": [
+      {
+        "name": "Learning objectives",
+        "items": [
+          "Carbon bonds",
+          "Functional groups"
+        ]
+      }
+    ]
+  }
+]

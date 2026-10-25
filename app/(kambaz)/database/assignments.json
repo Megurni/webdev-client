@@ -1,0 +1,92 @@
+[
+  {
+    "_id": "A101",
+    "course": "RS101",
+    "title": "A1 - Rocket Fundamentals",
+    "description": "Explain the rocket equation.",
+    "points": 100,
+    "dueDate": "2026-10-25",
+    "availableFrom": "2026-10-01",
+    "availableUntil": "2026-12-15"
+  },
+  {
+    "_id": "A102",
+    "course": "RS101",
+    "title": "A2 - Propellant Analysis",
+    "description": "Compare two propellant choices.",
+    "points": 100,
+    "dueDate": "2026-11-01",
+    "availableFrom": "2026-10-01",
+    "availableUntil": "2026-12-15"
+  },
+  {
+    "_id": "A103",
+    "course": "RS101",
+    "title": "A3 - Nozzle Design",
+    "description": "Sketch a rocket nozzle.",
+    "points": 100,
+    "dueDate": "2026-11-08",
+    "availableFrom": "2026-10-01",
+    "availableUntil": "2026-12-15"
+  },
+  {
+    "_id": "A201",
+    "course": "RS102",
+    "title": "A1 - Lift and Drag",
+    "description": "Analyze lift and drag on a wing.",
+    "points": 100,
+    "dueDate": "2026-10-26",
+    "availableFrom": "2026-10-01",
+    "availableUntil": "2026-12-15"
+  },
+  {
+    "_id": "A202",
+    "course": "RS102",
+    "title": "A2 - Airfoil Study",
+    "description": "Compare two airfoil profiles.",
+    "points": 100,
+    "dueDate": "2026-11-02",
+    "availableFrom": "2026-10-01",
+    "availableUntil": "2026-12-15"
+  },
+  {
+    "_id": "A203",
+    "course": "RS102",
+    "title": "A3 - Wind Tunnel",
+    "description": "Interpret tunnel measurements.",
+    "points": 100,
+    "dueDate": "2026-11-09",
+    "availableFrom": "2026-10-01",
+    "availableUntil": "2026-12-15"
+  },
+  {
+    "_id": "A204",
+    "course": "RS102",
+    "title": "A4 - Flight Performance",
+    "description": "Estimate flight performance.",
+    "points": 100,
+    "dueDate": "2026-11-16",
+    "availableFrom": "2026-10-01",
+    "availableUntil": "2026-12-15"
+  },
+  {
+    "_id": "A301",
+    "course": "RS103",
+    "title": "A1 - Spacecraft Systems",
+    "description": "Identify spacecraft subsystems.",
+    "points": 100,
+    "dueDate": "2026-10-27",
+    "availableFrom": "2026-10-01",
+    "availableUntil": "2026-12-15"
+  },
+  {
+    "_id": "A401",
+    "course": "RS104",
+    "title": "A1 - Carbon Bonds",
+    "description": "Draw carbon bonding structures.",
+    "points": 100,
+    "dueDate": "2026-10-28",
+    "availableFrom": "2026-10-01",
+    "availableUntil": "2026-12-15"
+  }
+]

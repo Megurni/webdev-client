@@ -14,6 +14,7 @@ export default function CourseNavigation({ cid }: { cid: string }) {
     ["Quizzes", "quizzes", "wd-course-quizzes-link"],
     ["Grades", "grades", "wd-course-grades-link"],
     ["People", "people/table", "wd-course-people-link"],
+    ["Announcements", "announcements", "wd-course-announcements-link"],
   ];
   return (
     <div id="wd-courses-navigation" className="wd list-group rounded-none text-lg">
