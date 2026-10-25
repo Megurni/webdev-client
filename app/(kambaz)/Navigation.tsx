@@ -36,7 +36,7 @@ export default function KambazNavigation() {
             : label !== "Help" && (pathname === href || pathname.startsWith(`${href}/`));
         return (
           <Link key={id} href={href} id={id} aria-current={active ? "page" : undefined}
-            className={`block py-3 text-center text-sm no-underline ${active ? "bg-white text-red-600" : "bg-black text-white"}`}>
+            className={`block py-3 text-center text-sm no-underline ${active ? "active bg-white text-red-600" : "bg-black text-white"}`}>
             <Icon className={`inline-block text-3xl ${active ? "text-red-600" : "text-white"}`} /><br />{label}
           </Link>
         );
