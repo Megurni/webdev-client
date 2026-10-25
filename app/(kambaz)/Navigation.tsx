@@ -7,12 +7,11 @@ import { FaInbox, FaRegCircleUser, FaCircleQuestion } from "react-icons/fa6";
 import { FaFlask } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import courses from "./database/courses.json";
 
 const navigation = [
   { label: "Account", href: "/account", id: "wd-account-link", icon: FaRegCircleUser },
   { label: "Dashboard", href: "/dashboard", id: "wd-dashboard-link", icon: AiOutlineDashboard },
-  { label: "Courses", href: `/courses/${courses[0]._id}/home`, id: "wd-course-link", icon: LiaBookSolid },
+  { label: "Courses", href: "/dashboard", id: "wd-courses-link", icon: LiaBookSolid },
   { label: "Calendar", href: "/calendar", id: "wd-calendar-link", icon: IoCalendarOutline },
   { label: "Inbox", href: "/inbox", id: "wd-inbox-link", icon: FaInbox },
   { label: "Labs", href: "/labs", id: "wd-labs-link", icon: FaFlask },
