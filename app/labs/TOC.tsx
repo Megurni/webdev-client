@@ -12,17 +12,31 @@ const LINKS = [
   { label: "Lab 5", href: "/labs/lab5" },
   { label: "Kambaz", href: "/", id: "wd-kambaz-link" },
   { label: "Book Ch3", href: "https://kambaz.dev/book/ch3" },
+  { label: "Book Ch4", href: "https://kambaz.dev/book/ch4" },
 ];
 
 export default function TOC() {
   const pathname = usePathname();
-  return <nav aria-label="Labs navigation" className="w-40 space-y-1">
-    {LINKS.map(({ label, href, id }) => {
-      const active = href === "/labs" ? pathname === href : href.startsWith("/labs/lab") && (pathname === href || pathname.startsWith(`${href}/`));
-      return <Link key={label} href={href} id={id} aria-current={active ? "page" : undefined}
-        className={`block rounded px-3 py-2 no-underline ${active ? "bg-blue-600 text-white" : "text-blue-700 hover:bg-blue-50"}`}>
-        {label}
-      </Link>;
-    })}
-  </nav>;
+  return (
+    <nav aria-label="Labs navigation" className="w-40 space-y-1">
+      {LINKS.map(({ label, href, id }) => {
+        const active =
+          href === "/labs"
+            ? pathname === href
+            : href.startsWith("/labs/lab") &&
+              (pathname === href || pathname.startsWith(`${href}/`));
+        return (
+          <Link
+            key={label}
+            href={href}
+            id={id}
+            aria-current={active ? "page" : undefined}
+            className={`block rounded px-3 py-2 no-underline ${active ? "bg-blue-600 text-white" : "text-blue-700 hover:bg-blue-50"}`}
+          >
+            {label}
+          </Link>
+        );
+      })}
+    </nav>
+  );
 }

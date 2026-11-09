@@ -1,0 +1,49 @@
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+#wd-lab4 {
+  max-width: 1000px;
+  padding: 1rem;
+  background: white;
+  color: #171717;
+}
+#wd-lab4 h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+#wd-lab4 h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+#wd-lab4 h3 {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+#wd-lab4 > div,
+#wd-lab4 > section,
+#wd-lab4 > form {
+  margin: 1.5rem 0;
+}
+#wd-lab4 hr {
+  margin: 1rem 0;
+  border-color: #d4d4d4;
+}
+#wd-lab4 button {
+  cursor: pointer;
+  border: 1px solid #a3a3a3;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.65rem;
+  margin: 0.25rem;
+}
+#wd-lab4 input:not([type="checkbox"]):not([type="radio"]),
+#wd-lab4 select {
+  border: 1px solid #a3a3a3;
+  border-radius: 0.25rem;
+  padding: 0.3rem 0.5rem;
+}
+#wd-lab4 a {
+  color: #1d4ed8;
+  text-decoration: underline;
+}

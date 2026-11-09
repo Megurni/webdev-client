@@ -6,7 +6,12 @@
     "loginId": "001234561S",
     "role": "STUDENT",
     "lastActivity": "2026-10-20",
-    "totalActivity": "10:21:32"
+    "totalActivity": "10:21:32",
+    "username": "iron_man",
+    "password": "stark123",
+    "email": "iron_man@kambaz.com",
+    "section": "",
+    "dob": ""
   },
   {
     "_id": "234",
@@ -15,7 +20,12 @@
     "loginId": "001234562S",
     "role": "STUDENT",
     "lastActivity": "2026-10-21",
-    "totalActivity": "23:32:23"
+    "totalActivity": "23:32:23",
+    "username": "batman",
+    "password": "wayne123",
+    "email": "batman@kambaz.com",
+    "section": "",
+    "dob": ""
   },
   {
     "_id": "345",
@@ -24,7 +34,12 @@
     "loginId": "001234563S",
     "role": "STUDENT",
     "lastActivity": "2026-10-22",
-    "totalActivity": "13:21:32"
+    "totalActivity": "13:21:32",
+    "username": "captain_america",
+    "password": "rogers123",
+    "email": "captain_america@kambaz.com",
+    "section": "",
+    "dob": ""
   },
   {
     "_id": "456",
@@ -33,7 +48,12 @@
     "loginId": "001234564S",
     "role": "TA",
     "lastActivity": "2026-10-23",
-    "totalActivity": "11:22:33"
+    "totalActivity": "11:22:33",
+    "username": "black_widow",
+    "password": "romanoff123",
+    "email": "black_widow@kambaz.com",
+    "section": "",
+    "dob": ""
   },
   {
     "_id": "567",
@@ -42,7 +62,12 @@
     "loginId": "001234565S",
     "role": "STUDENT",
     "lastActivity": "2026-10-24",
-    "totalActivity": "12:00:00"
+    "totalActivity": "12:00:00",
+    "username": "thor",
+    "password": "thor123",
+    "email": "thor@kambaz.com",
+    "section": "",
+    "dob": ""
   },
   {
     "_id": "678",
@@ -51,6 +76,25 @@
     "loginId": "001234566S",
     "role": "STUDENT",
     "lastActivity": "2026-10-22",
-    "totalActivity": "12:00:00"
+    "totalActivity": "12:00:00",
+    "username": "jane_foster",
+    "password": "foster123",
+    "email": "jane_foster@kambaz.com",
+    "section": "",
+    "dob": ""
+  },
+  {
+    "_id": "789",
+    "username": "nick_fury",
+    "password": "fury123",
+    "firstName": "Nick",
+    "lastName": "Fury",
+    "email": "nick_fury@kambaz.com",
+    "role": "FACULTY",
+    "loginId": "001234567F",
+    "section": "",
+    "lastActivity": "",
+    "totalActivity": "",
+    "dob": ""
   }
 ]
