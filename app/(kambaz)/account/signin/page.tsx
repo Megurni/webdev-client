@@ -2,7 +2,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import * as db from "../../database";
+import * as client from "../client";
+import axios from "axios";
 import { useAccountContext } from "../AccountContext";
 export default function Signin() {
   const [credentials, setCredentials] = useState({
@@ -11,19 +12,18 @@ export default function Signin() {
   });
   const { setCurrentUser } = useAccountContext();
   const router = useRouter();
-  const signin = () => {
-    const user = db.users.find(
-      (u) =>
-        u.username === credentials.username &&
-        u.password === credentials.password,
-    );
-    if (!user) return;
-    setCurrentUser(user);
-    router.push("/dashboard");
+  const [error, setError] = useState("");
+  const signin = async () => {
+    try {
+      const user = await client.signin(credentials);
+      setCurrentUser(user);
+      router.push("/dashboard");
+    } catch (error) { setError(axios.isAxiosError(error) ? error.response?.data?.message || error.message : "Unable to sign in"); }
   };
   return (
     <div id="wd-signin-screen" className="max-w-sm">
       <h1 className="mb-3 text-2xl font-semibold">Sign in</h1>
+      {error && <p className="mb-2 bg-red-100 p-2 text-red-800">{error}</p>}
       <form
         onSubmit={(e) => {
           e.preventDefault();

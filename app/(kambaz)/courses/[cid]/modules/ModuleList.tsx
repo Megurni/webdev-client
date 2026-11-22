@@ -1,13 +1,16 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import * as client from "../../client";
 import Lesson from "./Lesson";
 import Module from "./Module";
 import ModuleEditor from "./ModuleEditor";
 import ModuleControlButtons from "./ModuleControlButtons";
 import { useModulesStore } from "../../../store/modulesStore";
 export default function ModuleList({ cid }: { cid: string }) {
-  const { modules, updateModule } = useModulesStore();
+  const { modules, setModules, updateModule } = useModulesStore();
   const [collapsed, setCollapsed] = useState(false);
+  useEffect(() => { client.findModulesForCourse(cid).then(setModules); }, [cid, setModules]);
+  const onUpdateModule = async (module: (typeof modules)[number]) => updateModule(await client.updateModule(module));
   return (
     <div id="wd-modules-screen">
       <div
@@ -34,7 +37,6 @@ export default function ModuleList({ cid }: { cid: string }) {
       </div>
       <ul id="wd-modules" className="m-0 list-none p-0">
         {modules
-          .filter((m) => m.course === cid)
           .map((module) => (
             <Module
               key={module._id}
@@ -51,7 +53,7 @@ export default function ModuleList({ cid }: { cid: string }) {
                     }
                     onKeyDown={(e) => {
                       if (e.key === "Enter")
-                        updateModule({
+                        void onUpdateModule({
                           ...module,
                           name: module.name,
                           editing: false,

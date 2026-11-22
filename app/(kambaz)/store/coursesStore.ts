@@ -1,6 +1,6 @@
 "use client";
 import { create } from "zustand";
-import coursesJson from "../database/courses.json";
+import type coursesJson from "../database/courses.json";
 export type Course = (typeof coursesJson)[number] & {
   startDate: string;
 };
@@ -15,18 +15,16 @@ export const emptyCourse: Course = {
 };
 type CoursesStore = {
   courses: Course[];
+  setCourses: (courses: Course[]) => void;
   addCourse: (course: Course) => void;
   updateCourse: (course: Course) => void;
   deleteCourse: (id: string) => void;
 };
 export const useCoursesStore = create<CoursesStore>((set) => ({
-  courses: coursesJson.map((course) => ({
-    ...course,
-    startDate: "2026-09-09",
-  })),
+  courses: [],
+  setCourses: (courses) => set({ courses }),
   addCourse: (course) => {
-    const _id = crypto.randomUUID();
-    set((s) => ({ courses: [...s.courses, { ...course, _id }] }));
+    set((s) => ({ courses: [...s.courses, course] }));
   },
   updateCourse: (course) =>
     set((s) => ({

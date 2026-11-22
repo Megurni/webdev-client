@@ -1,7 +1,9 @@
 "use client";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useParams, redirect, notFound } from "next/navigation";
 import { FaAlignJustify } from "react-icons/fa6";
+import * as client from "../client";
+import * as enrollmentsClient from "../../enrollments/client";
 import CourseNavigation from "./Navigation";
 import CourseHeader from "./CourseHeader";
 import { useCoursesStore } from "../../store/coursesStore";
@@ -13,6 +15,19 @@ export default function CoursesLayout({ children }: { children: ReactNode }) {
   const course = useCoursesStore((s) => s.courses.find((c) => c._id === cid));
   const enrollments = useEnrollmentsStore((s) => s.enrollments);
   const { currentUser } = useAccountContext();
+  const setCourses = useCoursesStore((s) => s.setCourses);
+  const setEnrollments = useEnrollmentsStore((s) => s.setEnrollments);
+  const [pending, setPending] = useState(true);
+  useEffect(() => {
+    const load = async () => {
+      try {
+        setCourses(await client.fetchAllCourses());
+        setEnrollments(currentUser ? await enrollmentsClient.findMyEnrollments() : []);
+      } finally { setPending(false); }
+    };
+    void load();
+  }, [currentUser, cid, setCourses, setEnrollments]);
+  if (pending) return null;
   if (!course) notFound();
   if (
     currentUser &&

@@ -18,11 +18,13 @@ export default function LabsLayout({
             <header className="mb-4 p-2">
               <strong>Linhao Jin — CS4550 01</strong> ·{" "}
               <a
+                id="wd-github"
                 href="https://github.com/Megurni/webdev-client"
                 className="text-blue-700 underline"
               >
                 GitHub Repository
               </a>
+              {" · "}<a className="text-blue-700 underline" href={process.env.NEXT_PUBLIC_HTTP_SERVER}>Node Server</a>
             </header>
             {children}
           </td>

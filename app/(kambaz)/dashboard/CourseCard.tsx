@@ -1,21 +1,25 @@
 "use client";
+import * as enrollmentsClient from "../enrollments/client";
 import Image from "next/image";
 import Link from "next/link";
-import { type Course, useCoursesStore } from "../store/coursesStore";
+import { type Course } from "../store/coursesStore";
 import { useAccountContext } from "../account/AccountContext";
 import { useEnrollmentsStore } from "../store/enrollmentsStore";
 export default function CourseCard({
   course,
   canEdit,
   onEdit,
+  onDelete,
+  onEnrollmentChange,
 }: {
   course: Course;
   canEdit: boolean;
   onEdit: () => void;
+  onDelete: () => Promise<void>;
+  onEnrollmentChange: () => Promise<void>;
 }) {
-  const { deleteCourse } = useCoursesStore();
   const { currentUser } = useAccountContext();
-  const { enrollments, enroll, unenroll } = useEnrollmentsStore();
+  const { enrollments } = useEnrollmentsStore();
   const enrolled =
     !!currentUser &&
     enrollments.some(
@@ -68,7 +72,7 @@ export default function CourseCard({
                 type="button"
                 onClick={(event) => {
                   event.preventDefault();
-                  deleteCourse(course._id);
+                  void onDelete();
                 }}
                 className="rounded bg-red-600 px-3 py-1.5 text-sm text-white"
               >
@@ -78,10 +82,11 @@ export default function CourseCard({
           )}
           {currentUser && (
             <button
-              onClick={(event) => {
+              onClick={async (event) => {
                 event.preventDefault();
-                if (enrolled) unenroll(currentUser._id, course._id);
-                else enroll(currentUser._id, course._id);
+                if (enrolled) await enrollmentsClient.unenrollFromCourse(course._id);
+                else await enrollmentsClient.enrollIntoCourse(course._id);
+                await onEnrollmentChange();
               }}
               className={`rounded px-3 py-1.5 text-sm text-white ${enrolled ? "bg-red-600" : "bg-green-600"}`}
             >

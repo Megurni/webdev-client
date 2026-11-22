@@ -1,0 +1,8 @@
+#wd-lab5 > div { margin-bottom: 2rem; }
+#wd-lab5 h2 { font-size: 2rem; font-weight: bold; }
+#wd-lab5 h3 { margin: 1rem 0 .5rem; font-size: 1.5rem; font-weight: 600; }
+#wd-lab5 h4 { margin: .75rem 0 .5rem; font-size: 1.125rem; font-weight: 600; }
+#wd-lab5 input:not([type=checkbox]), #wd-lab5 select { border: 1px solid #d4d4d4; border-radius: .25rem; padding: .375rem .75rem; margin: .25rem; }
+#wd-lab5 a { display: inline-block; color: #1d4ed8; text-decoration: underline; margin: .25rem .75rem .25rem 0; }
+#wd-lab5 button { cursor: pointer; }
+#wd-lab5 pre { white-space: pre-wrap; }

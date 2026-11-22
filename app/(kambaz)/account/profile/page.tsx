@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import * as client from "../client";
 import { useRouter } from "next/navigation";
 import { useAccountContext, type User } from "../AccountContext";
 export default function Profile() {
@@ -57,14 +58,15 @@ export default function Profile() {
       </label>
       <button
         id="wd-update-profile"
-        onClick={() => setCurrentUser(profile)}
+        onClick={async () => setCurrentUser(await client.updateUser(profile))}
         className="mb-2 w-full rounded bg-green-600 px-3 py-2 text-white"
       >
         Update
       </button>
       <button
         id="wd-signout-btn"
-        onClick={() => {
+        onClick={async () => {
+          await client.signout();
           setCurrentUser(null);
           router.push("/account/signin");
         }}

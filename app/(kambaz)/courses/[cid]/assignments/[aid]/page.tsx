@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import * as client from "../../../client";
 import Link from "next/link";
 import { useParams, useRouter, notFound } from "next/navigation";
 import {
@@ -24,10 +25,10 @@ function Editor({
   const [assignment, setAssignment] = useState<Assignment>({ ...initial });
   const { addAssignment, updateAssignment } = useAssignmentsStore();
   const router = useRouter();
-  const save = () => {
+  const save = async () => {
     if (!canEdit) return;
-    if (aid === "new") addAssignment({ ...assignment, course: cid });
-    else updateAssignment({ ...assignment, course: cid });
+    if (aid === "new") addAssignment(await client.createAssignmentForCourse(cid, assignment));
+    else updateAssignment(await client.updateAssignment(assignment));
     router.push(`/courses/${cid}/assignments`);
   };
   const assignmentsPath = `/courses/${cid}/assignments`;
@@ -253,6 +254,12 @@ export default function AssignmentEditor() {
   const { cid, aid } = useParams<{ cid: string; aid: string }>();
   const assignments = useAssignmentsStore((s) => s.assignments);
   const { currentUser } = useAccountContext();
+  const setAssignments = useAssignmentsStore((s) => s.setAssignments);
+  const [pending, setPending] = useState(true);
+  useEffect(() => {
+    client.findAssignmentsForCourse(cid).then(setAssignments).finally(() => setPending(false));
+  }, [cid, setAssignments]);
+  if (pending) return null;
   const initial =
     aid === "new"
       ? { ...emptyAssignment, course: cid }

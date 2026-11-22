@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import * as client from "../client";
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { emptyUser, useAccountContext } from "../AccountContext";
@@ -9,15 +11,20 @@ export default function Signup() {
   const [verify, setVerify] = useState("");
   const { setCurrentUser } = useAccountContext();
   const router = useRouter();
-  const signup = () => {
+  const [error, setError] = useState("");
+  const signup = async () => {
     if (!username || !password) return;
-    const user = { ...emptyUser, _id: crypto.randomUUID(), username, password };
-    setCurrentUser(user);
-    router.push("/account/profile");
+    if (password !== verify) { setError("Passwords do not match"); return; }
+    try {
+      const user = await client.signup({ ...emptyUser, username, password });
+      setCurrentUser(user);
+      router.push("/account/profile");
+    } catch (error) { setError(axios.isAxiosError(error) ? error.response?.data?.message || error.message : "Unable to sign up"); }
   };
   return (
     <div id="wd-signup-screen" className="max-w-sm">
       <h1 className="mb-3 text-2xl font-semibold">Sign up</h1>
+      {error && <p className="mb-2 bg-red-100 p-2 text-red-800">{error}</p>}
       <form
         onSubmit={(e) => {
           e.preventDefault();

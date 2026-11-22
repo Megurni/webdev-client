@@ -1,4 +1,5 @@
 "use client";
+import * as client from "../../client";
 import { useState } from "react";
 import { useModulesStore } from "../../../store/modulesStore";
 export default function ModuleEditor({ cid }: { cid: string }) {
@@ -29,15 +30,15 @@ export default function ModuleEditor({ cid }: { cid: string }) {
               Add a new module
             </h3>
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
                 if (!moduleName.trim()) return;
-                addModule({
+                addModule(await client.createModuleForCourse(cid, {
                   _id: "",
                   course: cid,
                   name: moduleName.trim(),
                   lessons: [],
-                });
+                }));
                 setModuleName("");
                 setShow(false);
               }}

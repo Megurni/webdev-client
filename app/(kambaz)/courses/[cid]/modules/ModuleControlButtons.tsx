@@ -1,4 +1,5 @@
 "use client";
+import * as client from "../../client";
 import { FaCheckCircle, FaPencilAlt, FaTrash } from "react-icons/fa";
 import { BsPlus } from "react-icons/bs";
 import { IoEllipsisVertical } from "react-icons/io5";
@@ -19,7 +20,7 @@ export default function ModuleControlButtons({
           </button>
           <button
             aria-label="Delete module"
-            onClick={() => deleteModule(moduleId)}
+            onClick={async () => { await client.deleteModule(moduleId); deleteModule(moduleId); }}
           >
             <FaTrash />
           </button>

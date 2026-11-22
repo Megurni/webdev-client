@@ -1,6 +1,6 @@
 "use client";
 import { create } from "zustand";
-import assignmentsJson from "../database/assignments.json";
+import type assignmentsJson from "../database/assignments.json";
 export type Assignment = (typeof assignmentsJson)[number] & {
   group?: string;
   displayGradeAs?: string;
@@ -27,17 +27,19 @@ export const emptyAssignment: Assignment = {
 };
 type AssignmentsStore = {
   assignments: Assignment[];
+  setAssignments: (assignments: Assignment[]) => void;
   addAssignment: (assignment: Assignment) => void;
   updateAssignment: (assignment: Assignment) => void;
   deleteAssignment: (id: string, cid: string) => void;
 };
 export const useAssignmentsStore = create<AssignmentsStore>((set) => ({
-  assignments: assignmentsJson,
+  assignments: [],
+  setAssignments: (assignments) => set({ assignments }),
   addAssignment: (assignment) =>
     set((s) => ({
       assignments: [
         ...s.assignments,
-        { ...assignment, _id: crypto.randomUUID() },
+        assignment,
       ],
     })),
   updateAssignment: (assignment) =>

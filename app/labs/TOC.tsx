@@ -12,6 +12,7 @@ const LINKS = [
   { label: "Lab 5", href: "/labs/lab5" },
   { label: "Kambaz", href: "/", id: "wd-kambaz-link" },
   { label: "Book Ch3", href: "https://kambaz.dev/book/ch3" },
+  { label: "Book Ch5", href: "https://kambaz.dev/2026/fall/webdev/book/ch5" },
   { label: "Book Ch4", href: "https://kambaz.dev/book/ch4" },
 ];
 

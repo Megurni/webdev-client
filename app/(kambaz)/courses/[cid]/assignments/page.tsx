@@ -1,18 +1,20 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { FaPlus, FaSearch, FaTrash } from "react-icons/fa";
+import * as client from "../../client";
 import AssignmentItem from "./AssignmentItem";
 import { useAssignmentsStore } from "../../../store/assignmentsStore";
 import { useAccountContext } from "../../../account/AccountContext";
 export default function Assignments() {
   const { cid } = useParams<{ cid: string }>();
-  const { assignments, deleteAssignment } = useAssignmentsStore();
+  const { assignments, setAssignments, deleteAssignment } = useAssignmentsStore();
   const [search, setSearch] = useState("");
   const { currentUser } = useAccountContext();
   const canEdit =
     !currentUser || ["FACULTY", "ADMIN"].includes(currentUser.role);
+  useEffect(() => { client.findAssignmentsForCourse(cid).then(setAssignments); }, [cid, setAssignments]);
   return (
     <div id="wd-assignments">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
@@ -69,13 +71,13 @@ export default function Assignments() {
                 canEdit && (
                   <button
                     aria-label={`Delete ${a.title}`}
-                    onClick={() => {
+                    onClick={async () => {
                       if (
                         window.confirm(
                           `Are you sure you want to remove ${a.title}?`,
                         )
                       )
-                        deleteAssignment(a._id, cid);
+                        { await client.deleteAssignment(a._id); deleteAssignment(a._id, cid); }
                     }}
                     className="ml-auto p-2 text-red-600"
                   >
