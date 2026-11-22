@@ -24,6 +24,7 @@ export default function LabsLayout({
               >
                 GitHub Repository
               </a>
+              {" · "}<a className="text-blue-700 underline" href="https://github.com/Megurni/webdev-server/tree/a5">Node GitHub Repository</a>
               {" · "}<a className="text-blue-700 underline" href={process.env.NEXT_PUBLIC_HTTP_SERVER}>Node Server</a>
             </header>
             {children}
